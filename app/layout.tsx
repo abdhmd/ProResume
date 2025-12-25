@@ -15,6 +15,18 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "ProResume | Professional Resume Builder",
   description: "Create stunning, professional resumes in minutes with our interactive builder.",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "ProResume",
+  },
+};
+
+export const viewport = {
+  themeColor: "#0066ff",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({

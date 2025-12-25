@@ -1,28 +1,65 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --border: #e2e8f0;
+  --input: #f1f5f9;
+  --ring: #6366f1;
+  --primary: #4f46e5;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #1e293b;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #f1f5f9;
+  --accent-foreground: #1e293b;
+}
+
+.dark {
+  --background: #0f172a;
+  --foreground: #f8fafc;
+  --card: #1e293b;
+  --card-foreground: #f8fafc;
+  --border: #334155;
+  --input: #1e293b;
+  --ring: #818cf8;
+  --primary: #6366f1;
+  --primary-foreground: #ffffff;
+  --secondary: #1e293b;
+  --secondary-foreground: #f8fafc;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --accent: #1e293b;
+  --accent-foreground: #f8fafc;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 /* Custom Scrollbar */
@@ -50,14 +87,27 @@ body {
   width: 100%;
   padding: 1.25rem 0.75rem 0.5rem 0;
   font-size: 0.95rem;
-  color: #1e293b;
-  background-color: transparent;
+  color: var(--foreground);
+  background-color: var(--card);
   border-width: 0;
   border-bottom-width: 2px;
-  border-color: #e2e8f0;
+  border-color: var(--border);
   appearance: none;
   transition: border-color 0.3s;
   line-height: 1.5;
+}
+
+select.floating-input {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236366f1'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 1.5em;
+  padding-right: 2.5rem;
+}
+
+select.floating-input option {
+  background-color: var(--card);
+  color: var(--foreground);
 }
 
 .floating-input:focus {
@@ -70,7 +120,7 @@ body {
   top: 1rem;
   left: 0;
   font-size: 0.95rem;
-  color: #64748b;
+  color: var(--muted-foreground);
   transition: all 0.3s;
   transform-origin: 0 0;
   pointer-events: none;
@@ -98,7 +148,7 @@ details[open]>summary .arrow {
 }
 
 .glass-sidebar {
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--card);
   backdrop-filter: blur(12px);
-  border-right: 1px solid rgba(226, 232, 240, 0.6);
+  border-right: 1px solid var(--border);
 }
